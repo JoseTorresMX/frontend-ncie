@@ -1,0 +1,386 @@
+/* Colores de identidad (Variables CSS para fácil manejo) */
+:root {
+    --color-itcj-red: #FF0000;
+    --color-tecnm-blue: #193769;
+
+    --color-background-primary: #F2F4F7;
+    --color-card-background: #FFFFFF;
+    --color-text-dark: #2C3E50;
+    --color-text-secondary: #607B8B;
+    --color-border: #E0E4EB;
+    --color-error: var(--color-itcj-red); /* Los errores en rojo ITCJ */
+}
+
+/* Estilos Generales para el Body (para todo el sitio) */
+body {
+    font-family: Arial, sans-serif; /* Puedes cambiar esta fuente a una más moderna como 'Roboto', 'Inter', 'Open Sans' */
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-primary); /* Fondo gris azulado suave */
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+/* --- Estilos para el Login --- */
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
+    padding: 20px; /* Espacio alrededor en pantallas pequeñas */
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
+}
+
+.login-card {
+    background-color: var(--color-card-background); /* Blanco puro para la tarjeta */
+    border-radius: 8px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Sombra pronunciada */
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* Ancho máximo para la tarjeta de login */
+    text-align: center;
+}
+
+.login-logo {
+    max-width: 120px; /* Ajusta según el tamaño de tu logo */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.login-header h2 {
+    color: var(--color-tecnm-blue); /* Título en Azul TecNM */
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+.login-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--color-text-dark);
+    font-size: 0.9em;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border); /* Borde gris suave */
+    border-radius: 5px;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho */
+    font-size: 1em;
+    color: var(--color-text-dark);
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: var(--color-tecnm-blue); /* Borde azul TecNM al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(25, 55, 105, 0.2); /* Sombra suave para el focus */
+}
+
+/* Botones */
+.btn {
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    border: none; /* Quitamos bordes predeterminados */
+}
+
+.btn-primary {
+    background-color: var(--color-itcj-red); /* Botón principal en Rojo ITCJ */
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: #CC0000; /* Rojo ligeramente más oscuro al pasar el mouse */
+}
+
+.btn-full-width {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.error-message {
+    color: var(--color-error); /* Mensajes de error en Rojo ITCJ */
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 20px; /* Para mantener el espacio incluso si no hay mensaje */
+}
+
+.login-links {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.login-links .link-secondary {
+    color: var(--color-tecnm-blue); /* Enlaces en Azul TecNM */
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.login-links .link-secondary:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive para el Login --- */
+@media (max-width: 600px) {
+    .login-card {
+        padding: 25px;
+        margin: 10px; /* Reducir margen en pantallas muy pequeñas */
+    }
+    .login-header h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Estilos para el grupo de checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: -10px; /* Ajusta el margen superior para que no haya demasiado espacio */
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px; /* Espacio entre el checkbox y la etiqueta */
+    width: auto; /* Anula el 100% de width de los inputs generales */
+    height: auto;
+    /* Estilos básicos para el checkbox, puedes personalizarlo más si quieres */
+    accent-color: var(--color-tecnm-blue); /* Color del checkbox al seleccionarse */
+}
+
+.checkbox-group label {
+    margin-bottom: 0; /* Anula el margin-bottom de las labels generales */
+    font-weight: normal; /* Menos negrita que las labels de input */
+    color: var(--color-text-secondary); /* Un color de texto más suave */
+    font-size: 0.9em;
+}
+
+/* --- Estilos para el Dashboard Layout --- */
+.dashboard-layout {
+    display: flex; /* Permite que el sidebar y el contenido se pongan uno al lado del otro */
+    min-height: 100vh;
+    background-color: var(--color-background-primary); /* Fondo gris azulado suave */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px; /* Ancho fijo para el sidebar */
+    min-width: 250px; /* Asegura que no se haga más pequeño */
+    background-color: var(--color-tecnm-blue); /* Fondo Azul TecNM */
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Se mantiene en su lugar al hacer scroll */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Ocupa toda la altura de la vista */
+    transition: transform 0.3s ease-in-out; /* Para animación responsive */
+    z-index: 1000; /* Para que esté por encima del contenido en móvil */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Oculta el sidebar moviéndolo a la izquierda */
+}
+
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    max-width: 80px; /* Ajusta el tamaño del logo en el sidebar */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #FFFFFF;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Permite que la lista de navegación ocupe el espacio restante */
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav .nav-item {
+    display: block;
+    padding: 12px 20px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-nav .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Ligero hover blanco */
+}
+
+.sidebar-nav .nav-item.active {
+    background-color: var(--color-itcj-red); /* Elemento activo en Rojo ITCJ */
+    border-left: 5px solid rgba(255, 255, 255, 0.8); /* Borde blanco para resaltar */
+    padding-left: 15px; /* Ajuste para el borde */
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px; /* Espacio antes del footer */
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    padding: 20px;
+}
+
+.main-header {
+    background-color: var(--color-card-background); /* Fondo blanco para el header */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--color-tecnm-blue); /* Título en Azul TecNM */
+}
+
+.main-header .user-info {
+    font-weight: bold;
+    color: var(--color-text-dark);
+}
+
+.sidebar-toggle {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--color-tecnm-blue);
+    padding: 5px;
+    margin-right: 15px;
+}
+
+/* Dashboard Sections & Widgets */
+.dashboard-section {
+    margin-bottom: 30px;
+}
+
+.dashboard-section h2 {
+    font-size: 1.6em;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 10px;
+}
+
+.dashboard-widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 20px;
+}
+
+.widget-card, .activity-log-card {
+    background-color: var(--color-card-background); /* Fondo blanco para las tarjetas */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.widget-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--color-text-dark);
+    font-size: 1.2em;
+}
+
+.widget-card .widget-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--color-tecnm-blue); /* Valor principal en Azul TecNM */
+    margin: 0;
+}
+
+.widget-card .widget-icon {
+    font-size: 2em;
+    color: var(--color-text-secondary); /* Icono en gris secundario */
+    text-align: right;
+    margin-top: 10px;
+}
+
+.activity-log-card {
+    min-height: 150px; /* Altura mínima para la tarjeta de actividad */
+}
+
+/* --- Responsive para el Dashboard --- */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed; /* Fija el sidebar para que se superponga */
+        top: 0;
+        left: 0;
+        height: 100vh;
+        transform: translateX(-100%); /* Oculto por defecto en móvil */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Muestra el sidebar */
+    }
+
+    .sidebar-toggle {
+        display: block; /* Muestra el botón de hamburguesa */
+    }
+
+    .main-header {
+        justify-content: flex-start; /* Alinea el botón de toggle y el título */
+    }
+
+    .main-header h1 {
+        font-size: 1.5em;
+    }
+
+    .main-header .user-info {
+        display: none; /* Oculta info de usuario en móvil para ahorrar espacio */
+    }
+
+    .dashboard-layout {
+        flex-direction: column; /* Apila el contenido si no hay sidebar */
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+}
