@@ -384,3 +384,435 @@ body {
         padding: 15px;
     }
 }
+
+/*PAra lla pagina de inicio*/
+/* Paleta de Colores Suavizada y Balanceada */
+:root {
+    --color-itcj-red-primary: #C7382E; /* Rojo ITCJ suavizado (60% predominancia) */
+    --color-itcj-red-dark: #A62F27;   /* Rojo ITCJ más oscuro para hover */
+    --color-itcj-red-light: #E05F55;  /* Rojo ITCJ más claro para algunos detalles */
+
+    --color-tecnm-blue-primary: #1C3080; /* Azul TecNM suavizado (40% predominancia) */
+    --color-tecnm-blue-light: #2A409A;  /* Azul TecNM ligeramente más claro */
+
+    --color-text-dark: #333333;      /* Negro casi puro para texto principal */
+    --color-text-medium: #555555;    /* Gris medio para texto secundario */
+    --color-text-light: #888888;     /* Gris claro para meta-información */
+    --color-background-light: #FDFDFD; /* Fondo casi blanco para un look limpio */
+    --color-border-light: #EEEEEE;   /* Borde muy sutil */
+    --color-white: #FFFFFF;
+}
+
+/* Reseteo Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-medium); /* Texto general en gris medio */
+    background-color: var(--color-background-light);
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--color-tecnm-blue-primary); /* Azul como base del header */
+    color: var(--color-white);
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--color-itcj-red-light); /* Un rojo ligeramente más claro para hover en nav */
+}
+
+.login-button {
+    background-color: var(--color-itcj-red-primary); /* Rojo prominente para el botón de acción */
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-right: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: var(--color-itcj-red-dark);
+}
+
+/* Slider Section */
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: var(--color-background-light); /* Fondo claro */
+    height: 500px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.4);
+    color: var(--color-white);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.6);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--color-itcj-red-primary); /* Rojo ITCJ para el punto activo */
+}
+
+/* Publicaciones Section */
+.publicaciones {
+    padding: 40px 0;
+    background-color: var(--color-white); /* Fondo blanco limpio */
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+.publicaciones h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    color: var(--color-tecnm-blue-primary); /* Títulos de sección en azul */
+}
+
+.contenido-principal {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.destacada {
+    /* Aquí puedes usar una imagen relevante de fondo o un degradado con los colores principales */
+    background: linear-gradient(to bottom right, var(--color-tecnm-blue-primary), var(--color-tecnm-blue-light)); /* Degradado azul suave */
+    color: var(--color-white);
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.destacada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 50%);
+    z-index: 1;
+}
+
+.destacada > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+.destacada .categoria {
+    background-color: var(--color-itcj-red-primary); /* Rojo ITCJ para la categoría destacada */
+    color: var(--color-white);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.destacada h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--color-white); /* Título destacada en blanco */
+}
+
+.destacada .meta {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.lista-publicaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.publicacion {
+    display: flex;
+    gap: 15px;
+    background-color: var(--color-background-light); /* Fondo de publicación más claro */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    border: 1px solid var(--color-border-light);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.publicacion:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.publicacion .imagen {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.publicacion .imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.publicacion .texto h4 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: var(--color-tecnm-blue-primary); /* Títulos de publicaciones en azul */
+}
+
+.publicacion .texto p {
+    font-size: 0.9em;
+    color: var(--color-text-medium);
+}
+
+.publicacion .texto .autor {
+    font-size: 0.8em;
+    color: var(--color-text-light); /* Autor en gris más claro */
+    margin-top: 5px;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-tecnm-blue-primary); /* Fondo del footer en azul */
+    color: var(--color-white);
+    padding: 40px 0;
+}
+
+.contenedor-footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-col {
+    flex-basis: 200px;
+    padding: 10px;
+}
+
+.footer-col h4 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    position: relative;
+    color: var(--color-white);
+}
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    background-color: var(--color-itcj-red-primary); /* Underline de título en rojo */
+    height: 2px;
+    width: 50px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a,
+.footer-col .legal a {
+    color: rgba(255,255,255,0.7); /* Enlaces del footer más sutiles */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover,
+.footer-col .legal a:hover {
+    color: var(--color-itcj-red-light); /* Rojo más claro al hacer hover en enlaces del footer */
+}
+
+.footer-col .legal {
+    font-size: 0.8em;
+    color: rgba(255,255,255,0.6); /* Texto legal más sutil */
+    line-height: 1.5;
+}
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    header .logo {
+        margin: 10px 0;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    .login-button {
+        margin: 10px 0;
+    }
+
+    .contenido-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .publicacion {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .publicacion .imagen {
+        width: 100%;
+        height: 200px;
+    }
+
+    .footer-col {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .footer-col h4::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-col ul {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        height: 300px;
+    }
+
+    .prev, .next {
+        padding: 10px;
+        font-size: 1.2em;
+    }
+}
