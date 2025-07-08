@@ -4,8 +4,13 @@ dist/
 
 # Entornos
 .env
+.env.*
 .env.local
 
 # Sistema
 .DS_Store
 .idea/
+*.log
+
+# Netlify
+.netlify
