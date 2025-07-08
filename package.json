@@ -1,0 +1,31 @@
+{
+  "name": "ncie-js-vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseTorresMX/ncie-js-vanilla.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseTorresMX/ncie-js-vanilla/issues"
+  },
+  "homepage": "https://github.com/JoseTorresMX/ncie-js-vanilla#readme",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "whatwg-fetch": "^3.6.20"
+  },
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "vite": "^7.0.3"
+  }
+}
