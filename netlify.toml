@@ -6,3 +6,10 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Para SPAs, por si sale errores 404
+[[headers]]
+  for="/*"
+    [headers.values]
+      X-Frame-Options="DENY"
+      Content-Security-Policy="default-src 'self'"
