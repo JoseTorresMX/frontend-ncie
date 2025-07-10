@@ -1,12 +1,24 @@
 /* Variables CSS para una gestión de colores y espaciados más fácil */
 :root {
-  --primary-color: #2a5f8b; /* Tu color principal */
-  --secondary-color: #333;   /* Negro/gris oscuro para texto principal, cabecera */
-  --text-color-light: #fff;  /* Blanco para texto sobre fondos oscuros */
-  --background-light: #f9f9f9; /* Fondo claro para secciones */
-  --background-white: #fff;  /* Blanco puro para contenedores */
-  --border-color: #ddd;      /* Color de borde sutil */
-  --font-main: 'Inter', sans-serif; /* Usamos Inter como en tu HTML para coherencia */
+  --docker-blue: #1D63ED;    /* Azul brillante de Docker - Nuestro color principal */
+  --docker-light-blue: #E5F2FC; /* Azul muy claro de Docker - Para fondos sutiles/acentos */
+  --docker-off-black: #17191E; /* Negro/Gris oscuro de Docker - Para texto y fondos oscuros */
+  --white: #fff;              /* Blanco puro */
+  --gray-light: #f4f7f9;     /* Un gris muy claro para fondos generales */
+  --gray-medium: #cdd4da;    /* Un gris medio para bordes o líneas divisorias */
+  --gray-dark-text: #444;    /* Gris oscuro para textos secundarios */
+
+  /* Asignación a variables generales del sitio para claridad */
+  --primary-color: var(--docker-blue);
+  --secondary-color: var(--docker-off-black); /* Para textos o elementos oscuros */
+  --accent-color: var(--docker-light-blue);   /* Para acentos suaves o fondos claros */
+  --text-color-dark: var(--docker-off-black);
+  --text-color-light: var(--white);
+  --background-light: var(--gray-light);
+  --background-white: var(--white);
+  --border-color: var(--gray-medium);
+
+  --font-main: 'Inter', sans-serif; /* Manteniendo Inter */
 
   /* Definición de espaciados para facilitar la responsividad */
   --spacing-xs: 0.5rem;   /* 8px */
@@ -18,7 +30,7 @@
 
 /* Reset básico y estilos generales */
 *, *::before, *::after {
-  box-sizing: border-box; /* Incluye padding y border en el ancho/alto del elemento */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -26,28 +38,28 @@
 body {
   font-family: var(--font-main);
   line-height: 1.6;
-  color: var(--secondary-color);
+  color: var(--text-color-dark);
   background-color: var(--background-light);
-  overflow-x: hidden; /* Evita barras de desplazamiento horizontal no deseadas */
-  -webkit-font-smoothing: antialiased; /* Suaviza fuentes para mejor legibilidad */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--primary-color); /* Los enlaces usarán el azul Docker */
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #1e4566; /* Un tono más oscuro del primario en hover */
+  color: #1753c1; /* Un tono un poco más oscuro del azul Docker */
 }
 
 /* Contenedor principal para centrar el contenido y aplicar padding */
 .contenedor {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md); /* Padding horizontal responsivo */
+  padding: 0 var(--spacing-md);
 }
 
 /* --- Header --- */
@@ -55,31 +67,40 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-sm) var(--spacing-lg); /* Más padding en escritorio */
-  background-color: var(--background-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--white); /* Header blanco para un estilo limpio */
   border-bottom: 1px solid var(--border-color);
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-  gap: var(--spacing-sm); /* Espacio entre elementos del header */
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
 }
 
 .logo {
   font-weight: bold;
-  font-size: 1.8rem; /* Tamaño ligeramente más grande */
-  color: var(--secondary-color);
+  font-size: 1.8rem;
+  color: var(--secondary-color); /* Logo en gris oscuro Docker */
+}
+
+.logo small {
+    display: block; /* Para que la pequeña descripción esté en su propia línea */
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--gray-dark-text); /* Un gris para el texto secundario */
+    margin-top: 2px;
 }
 
 header nav ul {
   list-style: none;
-  display: flex; /* Para poner los elementos de navegación en línea */
-  gap: var(--spacing-xl); /* Mayor espacio entre elementos de navegación */
+  display: flex;
+  gap: var(--spacing-xl);
 }
 
 header nav a {
   text-decoration: none;
-  color: var(--secondary-color);
+  color: var(--secondary-color); /* Enlaces de navegación en gris oscuro */
   padding: var(--spacing-xs) 0;
-  position: relative; /* Para el efecto underline */
-  font-weight: 500; /* Ligeramente más grueso */
+  position: relative;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
@@ -88,9 +109,9 @@ header nav a::after {
   position: absolute;
   width: 0;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--primary-color); /* Underline con el azul Docker */
   left: 0;
-  bottom: -4px; /* Un poco más abajo */
+  bottom: -4px;
   transition: width 0.3s ease;
 }
 
@@ -99,58 +120,58 @@ header nav a:hover::after {
 }
 
 header nav a:hover {
-  color: var(--primary-color); /* Cambia de color al hacer hover */
+  color: var(--primary-color); /* Cambia de color al azul Docker al hacer hover */
 }
 
 .login-button {
-  padding: var(--spacing-xs) var(--spacing-sm); /* Espaciado más consistente */
-  background-color: var(--primary-color); /* Usar el color primario */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--primary-color); /* El botón de login usa el azul Docker */
   color: var(--text-color-light);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 600; /* Semibold */
+  font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 29, 237, 0.2); /* Sombra sutil del color del botón */
 }
 
 .login-button:hover {
-  background-color: #1e4566; /* Tono más oscuro del primario */
-  transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #1753c1; /* Tono más oscuro del azul Docker */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 29, 237, 0.3);
 }
 
 /* --- Slider Section --- */
 .slider {
   position: relative;
-  width: 100%; /* Ocupa el 100% del contenedor */
-  max-width: 900px;   /* Ajusta el ancho máximo del slider */
-  margin: var(--spacing-lg) auto; /* Centra y da margen arriba/abajo */
-  background-color: var(--secondary-color); /* Fondo oscuro */
+  width: 90%;
+  max-width: 1400px;
+  margin: var(--spacing-lg) auto;
   color: var(--text-color-light);
-  padding: var(--spacing-md);
+  padding: 0;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra para destacarlo */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .slides {
   position: relative;
-  height: 400px; /* Altura más flexible, se ajustará con media queries */
-  display: flex; /* Usamos flexbox para controlar el deslizamiento */
+  height: 450px; /* Altura fija para escritorio, ajustaremos en media queries */
+  display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-  flex-shrink: 0; /* Evita que los slides se encojan */
-  width: 100%; /* Cada slide ocupa el 100% del viewport del slider */
+  flex-shrink: 0;
+  width: 100%;
   height: 100%;
-  position: absolute; /* Para superponerlos */
+  position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.7s ease-in-out; /* Transición más suave y un poco más lenta */
-  display: flex; /* Para centrar contenido si lo hubiera, aunque aquí es solo imagen */
+  transition: opacity 0.7s ease-in-out;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -160,13 +181,89 @@ header nav a:hover {
   visibility: visible;
 }
 
-.slide img {
+/* Clases para el efecto ahumado en el carrusel */
+.slide-inner {
+  position: relative;
   width: 100%;
-  height: 100%; /* Ocupa el 100% de la altura del slide */
-  object-fit: cover; /* Recorta la imagen para cubrir el espacio */
-  border-radius: 8px; /* Ligeramente más pequeños para que encajen mejor */
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene 'cover' para que la imagen llene siempre el espacio */
+  border-radius: 8px; /* Asegura el redondeo de la imagen */
   display: block;
 }
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro con opacidad para el "ahumado" */
+  border-radius: 8px; /* Asegura el redondeo del overlay */
+  display: flex;
+  flex-direction: column; /* Cambiado a columna para apilar texto y botón */
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-light);
+  text-align: center;
+  padding: var(--spacing-lg); /* Padding para el contenido del overlay */
+  box-sizing: border-box; /* Incluye padding en el ancho/alto */
+}
+
+.slide-text {
+  position: relative;
+  z-index: 10;
+  max-width: 700px; /* Limita el ancho del texto para mejor lectura */
+}
+
+.slide-text span {
+    display: inline-block; /* Permite aplicar padding/margin */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para la categoría */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 50px; /* Borde más redondeado para el "tag" */
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    backdrop-filter: blur(2px); /* Efecto de desenfoque ligero detrás del span */
+}
+
+.slide-text h1 {
+    font-size: 3.5rem; /* Ajuste para un título más grande */
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para el texto */
+}
+
+.slide-text p {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-lg); /* Más espacio antes del botón */
+    max-width: 80%; /* Para que el párrafo no sea demasiado ancho */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slide-text .login-button { /* Estilos específicos para el botón dentro del carrusel */
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 1.1rem;
+    border-radius: 5px;
+    display: inline-block; /* Para que el padding y margin funcionen */
+    margin-top: var(--spacing-md); /* Espacio superior */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.slide-text .login-button:hover {
+    background-color: #1753c1;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 18px rgba(0, 29, 237, 0.4);
+}
+
 
 /* Controles del Slider */
 .slider .prev,
@@ -174,94 +271,111 @@ header nav a:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7); /* Blanco semitransparente */
-  color: var(--secondary-color);
+  background: var(--white);
+  color: var(--primary-color);
   border: none;
   padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 1.8rem; /* Iconos un poco más grandes */
+  font-size: 1.8rem;
   cursor: pointer;
   border-radius: 50%;
-  width: 45px; /* Tamaño fijo para hacerlos perfectos círculos */
+  width: 45px;
   height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  z-index: 20; /* Asegurar que estén por encima de todo */
 }
 
 .slider .prev:hover,
 .slider .next:hover {
-  background: var(--primary-color); /* Color primario al hover */
+  background: var(--primary-color);
   color: var(--text-color-light);
-  transform: translateY(-50%) scale(1.05); /* Ligeramente más grande */
+  transform: translateY(-50%) scale(1.05);
 }
 
 .slider .prev {
-  left: var(--spacing-md); /* Mayor separación de los bordes */
+  left: var(--spacing-md);
 }
 
 .slider .next {
-  right: var(--spacing-md); /* Mayor separación de los bordes */
+  right: var(--spacing-md);
 }
 
 .carousel-dots {
   display: flex;
   justify-content: center;
-  margin-top: var(--spacing-md); /* Más margen arriba */
+  position: absolute; /* Posiciona los puntos de forma absoluta */
+  bottom: var(--spacing-md); /* Distancia desde abajo del slider */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15; /* Por encima del overlay pero por debajo de los botones */
+  background-color: rgba(255, 255, 255, 0.3); /* Fondo semitransparente para los puntos */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 50px;
+  backdrop-filter: blur(3px); /* Desenfoque para el fondo de los puntos */
 }
 
 .carousel-dots .dot {
-  width: 10px; /* Ligeramente más pequeños */
+  width: 10px;
   height: 10px;
-  background: rgba(255, 255, 255, 0.6); /* Blanco semitransparente */
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
-  margin: 0 var(--spacing-xs); /* Menos margen entre puntos */
-  opacity: 0.8; /* Siempre un poco visible */
+  margin: 0 var(--spacing-xs);
+  opacity: 0.8;
   cursor: pointer;
-  border: 2px solid transparent; /* Para el borde activo */
+  border: 2px solid transparent;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .carousel-dots .dot.active {
-  background: var(--primary-color); /* Color primario al activo */
-  border-color: var(--text-color-light); /* Borde blanco para destacarlo */
+  background: var(--text-color-light);
+  border-color: var(--primary-color);
   opacity: 1;
 }
 
-/* --- Publicaciones Section --- */
+/* --- Publicaciones Section (General) --- */
 .publicaciones {
-  padding: var(--spacing-xl) 0; /* Más padding vertical */
-  background-color: var(--background-light);
+  padding: var(--spacing-xl) 0;
+  background-color: var(--background-light); /* Fondo claro para la sección */
 }
 
 .publicaciones .contenedor {
-  padding: 0 var(--spacing-md); /* Consistencia con el padding horizontal */
+  padding: 0 var(--spacing-md);
 }
 
 h2 {
   text-align: center;
-  font-size: 2.5rem; /* Título más grande */
-  margin-bottom: var(--spacing-lg); /* Más espacio abajo */
-  color: var(--secondary-color);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-xs); /* Ajuste de margen */
+  color: var(--secondary-color); /* Título principal en gris oscuro Docker */
 }
+
+.publicaciones .contenedor > p { /* Párrafo debajo del h2 de publicaciones */
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gray-dark-text);
+    margin-bottom: var(--spacing-lg);
+}
+
 
 .contenido-principal {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Mantiene la proporción 2/1 */
-  gap: var(--spacing-xl); /* Mayor espacio entre columnas */
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-xl);
   margin-top: var(--spacing-lg);
 }
 
 .destacada {
-  background-color: var(--secondary-color); /* Tu fondo oscuro */
+  background-color: var(--primary-color);
   color: var(--text-color-light);
-  padding: var(--spacing-lg); /* Más padding interno */
+  padding: var(--spacing-lg);
   border-radius: 10px;
-  min-height: 380px; /* Altura mínima para la destacada */
+  min-height: 380px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Alinea el contenido al final */
+  justify-content: flex-end;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -275,10 +389,10 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../IMG/destacada_bg.jpg'); /* **ASEGÚRATE DE QUE ESTA IMAGEN EXISTA** */
+    background-image: url('../assets/images/destacada_bg.jpg'); /* RUTA ACTUALIZADA. Verifica si necesitas '../' */
     background-size: cover;
     background-position: center;
-    filter: brightness(0.7); /* Oscurece la imagen para que el texto resalte */
+    filter: brightness(0.7);
     z-index: 1;
 }
 
@@ -288,32 +402,30 @@ h2 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 60%; /* Ajusta la altura del gradiente */
+    height: 60%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
     z-index: 2;
 }
-
 
 .destacada > * { /* Asegura que el contenido esté por encima de los overlays */
     position: relative;
     z-index: 3;
 }
 
-
 .destacada .categoria {
   font-size: 0.95rem;
   text-transform: uppercase;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: 4px;
-  align-self: flex-start; /* Se alinea a la izquierda dentro del flex container */
+  align-self: flex-start;
   margin-bottom: var(--spacing-sm);
   font-weight: 600;
 }
 
 .destacada h3 {
   margin: var(--spacing-sm) 0;
-  font-size: 2rem; /* Más grande para destacada */
+  font-size: 2rem;
   line-height: 1.2;
 }
 
@@ -323,12 +435,13 @@ h2 {
 }
 
 .lista-publicaciones {
-  margin-top: 0; /* Remueve el margen extra si viene del HTML estático */
-  display: grid;
-  gap: var(--spacing-md); /* Espacio entre publicaciones */
+  margin-top: 0;
+  display: grid; /* Ahora es un grid para el "Más Reciente" también */
+  gap: var(--spacing-md);
 }
 
-.publicacion {
+/* Estilos para las publicaciones de la lista de publicaciones (sección destacadas) */
+.lista-publicaciones .publicacion:not(.publicacion--card) {
   display: flex;
   gap: var(--spacing-md);
   background-color: var(--background-white);
@@ -336,54 +449,246 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  align-items: flex-start; /* Alinea elementos al inicio si tienen diferente altura */
+  align-items: flex-start;
 }
 
-.publicacion:hover {
+.lista-publicaciones .publicacion:not(.publicacion--card):hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.publicacion .imagen {
-  flex-shrink: 0; /* Evita que la imagen se encoja */
-  width: 140px; /* Ancho ligeramente mayor */
+.lista-publicaciones .publicacion:not(.publicacion--card) .imagen {
+  flex-shrink: 0;
+  width: 140px;
   height: 90px;
   border-radius: 5px;
   overflow: hidden;
 }
 
-.publicacion .imagen img {
+.lista-publicaciones .publicacion:not(.publicacion--card) .imagen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.publicacion .texto {
-  flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
-}
-
-.publicacion .texto h4 {
-  margin: 0; /* Elimina margen superior para pegarlo a la imagen */
+.lista-publicaciones .publicacion:not(.publicacion--card) .texto h4 {
+  margin: 0;
   font-size: 1.2rem;
   line-height: 1.3;
   margin-bottom: var(--spacing-xs);
+  color: var(--secondary-color);
 }
 
-.publicacion .texto p {
+.lista-publicaciones .publicacion:not(.publicacion--card) .texto p {
   font-size: 0.95rem;
   color: #666;
   margin-bottom: var(--spacing-xs);
 }
 
-.publicacion .autor {
+.lista-publicaciones .publicacion:not(.publicacion--card) .autor {
   font-size: 0.85rem;
   color: #888;
 }
 
+
+/* --- MÓDULO MÁS RECIENTE --- */
+/* La sección ahora usa .publicaciones pero con un modificador */
+/* ... (tu CSS anterior aquí, sin cambios hasta la sección de "MÓDULO MÁS RECIENTE") ... */
+
+
+/* --- MÓDULO MÁS RECIENTE --- */
+/* La sección ahora usa .publicaciones pero con un modificador */
+.publicaciones--reciente {
+    padding: var(--spacing-xl) 0; /* Asegura padding consistente */
+    background-color: var(--background-white); /* Fondo blanco para esta sección */
+}
+
+/* Título con subrayado */
+.titulo-reciente {
+    text-align: center;
+    font-size: 2.5rem; /* Ajustado para que sea igual al h2 principal */
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+.titulo-reciente span {
+    text-decoration: underline; /* El subrayado solo para el span */
+    text-decoration-color: var(--primary-color); /* Color del subrayado */
+    text-decoration-thickness: 3px; /* Grosor del subrayado */
+    text-underline-offset: 5px; /* Separación del texto */
+}
+
+/* Contenedor del Carrusel de Publicaciones */
+.publicaciones-recientes-grid { /* Renombrado, pero mantenemos el selector para simplificar */
+    display: flex; /* CAMBIO CLAVE: Usamos flexbox para el carrusel */
+    overflow-x: auto; /* Permite el scroll horizontal si las tarjetas no caben */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+    scroll-snap-type: x mandatory; /* CAMBIO CLAVE: Hace que el scroll se "ajuste" a cada tarjeta */
+    gap: var(--spacing-md); /* Espacio entre las tarjetas */
+    padding: var(--spacing-sm); /* Un poco de padding para que las tarjetas no toquen los bordes del contenedor en scroll */
+    margin-bottom: var(--spacing-md); /* Espacio debajo del carrusel */
+    /* Opcional: Ocultar la barra de scroll si lo deseas */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.publicaciones-recientes-grid::-webkit-scrollbar { /* Chrome, Safari, Opera */
+    display: none;
+}
+
+
+/* Estilos para las tarjetas individuales dentro del carrusel */
+.publicacion--card { /* Modificador de .publicacion para el estilo de tarjeta */
+    flex-shrink: 0; /* CAMBIO CLAVE: Evita que las tarjetas se encojan */
+    width: 300px; /* CAMBIO CLAVE: Ancho fijo para cada tarjeta en el carrusel */
+    /* width: calc( (100% / 3) - (var(--spacing-md) * 2 / 3) ); // Para 3 por fila */
+    /* width: calc(100% / 2 - var(--spacing-md) / 2); // Para 2 por fila */
+    /* Puedes ajustar el width aquí si quieres mostrar un número específico de tarjetas visibles */
+    
+    scroll-snap-align: start; /* CAMBIO CLAVE: Las tarjetas se ajustan al inicio del scroll */
+
+    background-color: var(--background-light); /* Fondo claro para las tarjetas de publicaciones */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column; /* Apila imagen y texto */
+    text-align: left; /* Alineación de texto por defecto */
+}
+
+.publicacion--card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.publicacion--card .imagen {
+    width: 100%;
+    height: 180px; /* Altura fija para la imagen de la tarjeta */
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color); /* Separador visual */
+}
+
+.publicacion--card .imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Las imágenes cubren el espacio */
+    display: block;
+}
+
+.publicacion--card .texto {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que ocupen el espacio restante */
+}
+
+.publicacion--card .texto span { /* Categoría/Tiempo de lectura */
+    font-size: 0.85rem;
+    color: var(--primary-color); /* Categoría en azul Docker */
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    display: block; /* Para que ocupe su propia línea */
+}
+
+.publicacion--card .texto h4 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-sm);
+    color: var(--secondary-color);
+}
+
+.publicacion--card .texto p {
+    font-size: 0.95rem;
+    color: var(--gray-dark-text); /* Texto en gris oscuro */
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1; /* Para que el párrafo empuje el autor hacia abajo */
+}
+
+.publicacion--card .autor {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+
+/* --- Media Queries para Responsividad del Carrusel de Publicaciones --- */
+
+/* Pantallas extra pequeñas y pequeñas (móviles): Hasta 767px */
+@media (max-width: 767px) {
+    /* ... (tus media queries anteriores para otras secciones) ... */
+
+    /* Módulo "Más Reciente" en móviles */
+    .titulo-reciente {
+        font-size: 2rem;
+    }
+    .publicaciones-recientes-grid {
+        padding: var(--spacing-xs); /* Menos padding en móviles */
+        gap: var(--spacing-sm); /* Menos espacio entre tarjetas */
+    }
+    .publicacion--card {
+        width: 250px; /* Ancho un poco menor para móviles */
+    }
+    .publicacion--card .imagen {
+        height: 140px; /* Altura ajustada para imagen de publicaciones en móvil */
+    }
+    .publicacion--card .texto h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Pantallas medianas (tabletas): Entre 768px y 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* ... (tus media queries anteriores para otras secciones) ... */
+
+    /* Módulo "Más Reciente" en tabletas */
+    .titulo-reciente {
+        font-size: 2.2rem;
+    }
+    .publicaciones-recientes-grid {
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+    .publicacion--card {
+        width: 300px; /* Ancho ligeramente mayor para tabletas */
+    }
+    .publicacion--card .imagen {
+        height: 160px; /* Altura ajustada para imagen de publicaciones en tabletas */
+    }
+    .publicacion--card .texto h4 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Pantallas grandes (escritorio): Más de 1025px */
+@media (min-width: 1025px) {
+    /* ... (tus media queries anteriores para otras secciones) ... */
+
+    /* Módulo "Más Reciente" en escritorio */
+    .titulo-reciente {
+        font-size: 2.5rem;
+    }
+    .publicaciones-recientes-grid {
+        /* No es necesario un grid-template-columns aquí, ya es flex */
+        padding: var(--spacing-md); /* Padding para que el scroll tenga espacio visual */
+        gap: var(--spacing-lg);
+    }
+    .publicacion--card {
+        width: 350px; /* Ancho ideal para desktop para que se vean algunas tarjetas parciales */
+        /* Si quieres ver 3 completas, usa width: calc( (100% / 3) - (var(--spacing-lg) * 2 / 3) ); */
+    }
+    .publicacion--card .imagen {
+        height: 180px;
+    }
+    .publicacion--card .texto h4 {
+        font-size: 1.3rem;
+    }
+}
+
 /* --- Footer --- */
 .footer {
-  background-color: var(--secondary-color); /* Color de fondo del header para consistencia */
+  background-color: var(--secondary-color);
   color: var(--text-color-light);
   padding: var(--spacing-xl) var(--spacing-md);
   font-size: 0.9rem;
@@ -393,18 +698,18 @@ h2 {
   max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas más flexibles */
-  gap: var(--spacing-lg); /* Más espacio entre columnas */
-  padding: 0 var(--spacing-md); /* Consistencia con el padding horizontal */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
 }
 
 .footer-col {
-    margin-bottom: var(--spacing-lg); /* Espacio inferior para cuando se apilan */
+    margin-bottom: var(--spacing-lg);
 }
 
 .footer-col h4 {
   margin-bottom: var(--spacing-md);
-  font-size: 1.3rem; /* Títulos un poco más grandes */
+  font-size: 1.3rem;
   color: var(--primary-color);
   position: relative;
   padding-bottom: var(--spacing-xs);
@@ -421,12 +726,12 @@ h2 {
 }
 
 .footer-col p {
-  color: rgba(255, 255, 255, 0.7); /* Texto más claro */
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-col .legal {
-  margin-top: var(--spacing-sm); /* Espacio arriba */
-  font-size: 0.8rem; /* Un poco más pequeño */
+  margin-top: var(--spacing-sm);
+  font-size: 0.8rem;
   line-height: 1.5;
 }
 
@@ -449,7 +754,7 @@ h2 {
 }
 
 .footer-col ul li a {
-  color: rgba(255, 255, 255, 0.8); /* Menos opaco que el párrafo */
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -458,19 +763,41 @@ h2 {
   color: var(--text-color-light);
 }
 
+.footer-col .tags { /* Estilos para el nuevo div.tags en el footer */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-col .tags span {
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo para los tags */
+    color: var(--text-color-light);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+}
+
+.footer-col .tags span:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
 
 /* --- Media Queries para Responsividad --- */
 
 /* Pantallas extra pequeñas y pequeñas (móviles): Hasta 767px */
 @media (max-width: 767px) {
     header {
-        flex-direction: column; /* Apila elementos del header */
+        flex-direction: column;
         text-align: center;
         padding: var(--spacing-sm) var(--spacing-md);
     }
 
     header nav ul {
-        flex-direction: column; /* Apila los enlaces de navegación */
+        flex-direction: column;
         gap: var(--spacing-sm);
         width: 100%;
         margin-top: var(--spacing-sm);
@@ -478,22 +805,37 @@ h2 {
 
     header nav ul li a {
         padding: var(--spacing-xs) 0;
-        display: block; /* Ocupa todo el ancho disponible para ser clicable */
+        display: block;
     }
 
     .login-button {
-        width: 100%; /* El botón ocupa todo el ancho */
+        width: 100%;
         margin-top: var(--spacing-sm);
     }
 
     .slider {
-        margin: var(--spacing-md) auto; /* Menos margen vertical en móviles */
-        padding: var(--spacing-sm);
-        max-width: 95%; /* Asegura que el slider no toque los bordes */
+        margin: var(--spacing-md) auto;
+        padding: 0;
+        max-width: 95%;
     }
 
     .slides {
-        height: 250px; /* Reduce la altura del slider en móviles */
+        height: 250px; /* Altura más pequeña para móviles */
+    }
+
+    .slide-overlay {
+        padding: var(--spacing-sm); /* Reducir el padding en móviles */
+    }
+    .slide-text h1 {
+        font-size: 2rem; /* Reduce el tamaño del título en móviles */
+    }
+    .slide-text p {
+        font-size: 0.95rem; /* Reduce el tamaño del párrafo */
+        margin-bottom: var(--spacing-md);
+    }
+    .slide-text .login-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 1rem;
     }
 
     .slider .prev, .slider .next {
@@ -505,54 +847,82 @@ h2 {
         right: var(--spacing-sm);
     }
 
+    .carousel-dots {
+        bottom: var(--spacing-sm); /* Ajusta posición en móviles */
+    }
+
     h2 {
-        font-size: 2rem; /* Reduce el tamaño del título principal */
+        font-size: 2rem;
         margin-bottom: var(--spacing-md);
     }
 
+    .publicaciones .contenedor > p {
+        font-size: 1rem;
+    }
+
     .contenido-principal {
-        grid-template-columns: 1fr; /* Una sola columna en móviles */
-        gap: var(--spacing-lg); /* Espacio entre la destacada y la lista */
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
     }
 
     .destacada {
-        min-height: 280px; /* Altura reducida para la destacada */
+        min-height: 280px;
         padding: var(--spacing-md);
     }
 
     .destacada h3 {
-        font-size: 1.6rem; /* Título destacada más pequeño */
+        font-size: 1.6rem;
     }
 
-    .publicacion {
-        flex-direction: column; /* Apila imagen y texto en publicaciones */
+    .lista-publicaciones .publicacion:not(.publicacion--card) {
+        flex-direction: column;
         text-align: center;
         padding: var(--spacing-md);
     }
 
-    .publicacion .imagen {
-        width: 100%; /* Imagen ocupa todo el ancho */
-        height: 180px; /* Altura de imagen más grande */
-        margin: 0 auto var(--spacing-sm) auto; /* Centra y da margen abajo */
+    .lista-publicaciones .publicacion:not(.publicacion--card) .imagen {
+        width: 100%;
+        height: 180px;
+        margin: 0 auto var(--spacing-sm) auto;
     }
 
-    .publicacion .texto h4 {
+    .lista-publicaciones .publicacion:not(.publicacion--card) .texto h4 {
       font-size: 1.1rem;
     }
 
+    /* Módulo "Más Reciente" en móviles */
+    .titulo-reciente {
+        font-size: 2rem; /* Mantener coherencia */
+        margin-bottom: var(--spacing-md);
+    }
+    .publicaciones-recientes-grid {
+        grid-template-columns: 1fr; /* Una columna para móviles */
+        gap: var(--spacing-md);
+    }
+    .publicacion--card .imagen {
+        height: 150px; /* Altura ajustada para imagen de publicaciones en móvil */
+    }
+    .publicacion--card .texto h4 {
+        font-size: 1.2rem;
+    }
+
+
     .footer-col {
-        flex-basis: 100%; /* Cada columna del footer ocupa todo el ancho */
+        flex-basis: 100%;
         text-align: center;
         margin-bottom: var(--spacing-md);
     }
 
-    .footer-col h4::after { /* Centra la línea del título en el footer */
+    .footer-col h4::after {
         left: 50%;
         transform: translateX(-50%);
     }
 
     .footer-col ul {
         padding-left: 0;
+    }
+    .footer-col .tags {
+        justify-content: center; /* Centrar tags en móvil */
     }
 }
 
@@ -563,20 +933,30 @@ h2 {
     }
 
     header nav ul {
-        gap: var(--spacing-lg); /* Menos espacio que en escritorio, más que en móvil */
+        gap: var(--spacing-lg);
     }
 
     .slider {
-        max-width: 850px; /* Ancho un poco más grande en tabletas */
-        padding: var(--spacing-md);
+        max-width: 850px;
+        padding: 0;
     }
 
     .slides {
-        height: 350px; /* Altura intermedia para tabletas */
+        height: 350px; /* Altura para tabletas */
+    }
+
+    .slide-overlay {
+        padding: var(--spacing-md);
+    }
+    .slide-text h1 {
+        font-size: 2.8rem;
+    }
+    .slide-text p {
+        font-size: 1.1rem;
     }
 
     .contenido-principal {
-        grid-template-columns: 1.5fr 1fr; /* Proporción ligeramente diferente */
+        grid-template-columns: 1.5fr 1fr;
         gap: var(--spacing-lg);
     }
 
@@ -589,18 +969,71 @@ h2 {
         font-size: 1.8rem;
     }
 
-    .publicacion .imagen {
-        width: 100px; /* Reduce un poco la imagen en tabletas */
+    .lista-publicaciones .publicacion:not(.publicacion--card) .imagen {
+        width: 100px;
         height: 70px;
     }
 
+    /* Módulo "Más Reciente" en tabletas */
+    .titulo-reciente {
+        font-size: 2.2rem; /* Ajustar para tabletas */
+    }
+    .publicaciones-recientes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Dos o tres columnas para tabletas */
+        gap: var(--spacing-md);
+    }
+    .publicacion--card .imagen {
+        height: 160px; /* Altura ajustada para imagen de publicaciones en tabletas */
+    }
+    .publicacion--card .texto h4 {
+        font-size: 1.25rem;
+    }
+
+
     .footer-col {
-        flex-basis: calc(50% - var(--spacing-lg) / 2); /* Dos columnas en tabletas */
+        flex-basis: calc(50% - var(--spacing-lg) / 2);
     }
 }
 
 /* Pantallas grandes (escritorio): Más de 1025px */
 @media (min-width: 1025px) {
-    /* Aquí puedes colocar estilos específicos para escritorios grandes,
-       aunque la mayoría ya están cubiertos por los estilos base. */
+    .slider {
+        width: 90%;
+        max-width: 1600px;
+        padding: 0;
+    }
+
+    .slides {
+        height: 500px; /* Altura para pantallas grandes */
+    }
+
+    .slide-overlay {
+        padding: var(--spacing-xl);
+    }
+
+    .slider .prev,
+    .slider .next {
+        width: 55px;
+        height: 55px;
+        font-size: 2.2rem;
+        left: var(--spacing-xl);
+        right: var(--spacing-xl);
+    }
+    .carousel-dots {
+        bottom: var(--spacing-lg); /* Posición para pantallas grandes */
+    }
+
+    /* Módulo "Más Reciente" en escritorio */
+    .titulo-reciente {
+        font-size: 2.5rem; /* Vuelve al tamaño de escritorio */
+    }
+    .publicaciones-recientes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 o 4 columnas en escritorio */
+    }
+    .publicacion--card .imagen {
+        height: 180px; /* Altura original para escritorio */
+    }
+    .publicacion--card .texto h4 {
+        font-size: 1.3rem; /* Ajuste para escritorio */
+    }
 }

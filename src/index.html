@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NCIE - Nodo ITCJ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NCIE - Página principal</title>
+  <link rel="stylesheet" href="css/base.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
 </head>
-
 <body>
   <header>
-    <div class="logo">NCIE</div>
+    <div class="logo">NCIE <small>Nodo de Creatividad, Innovación y Emprendimiento</small></div>
     <nav>
       <ul>
         <li><a href="#">Inicio</a></li>
-        <li><a href="../HTML/Cotiza - NCIE.html">Cotizaciones</a></li>
+        <li><a href="#">Servicios</a></li>
         <li><a href="#">Conócenos</a></li>
         <li><a href="#">Contacto</a></li>
       </ul>
     </nav>
-    <button onclick="location.href='Iniciar Sesión - NCIE.html'" class="login-button">Iniciar Sesión</button>
+    <button onclick="location.href='Iniciar Sesión - NCIE.html'" class="login-button">Iniciar sesión</button>
   </header>
 
   <section class="slider">
-    <div class="slides">
-      <div class="slide active">
-        <img src="../IMG/1.jfif" alt="Aviso 1">
-      </div>
-      <div class="slide">
-        <img src="../IMG/nodo.jpg" alt="Aviso 2">
-      </div>
-      <div class="slide">
-        <img src="../IMG/3.jpg" alt="Aviso 3">
-      </div>
-    </div>
+    <div class="slides"> <div class="slide active">
+          <div class="slide-inner">
+            <img src="assets/images/pic1.jpeg" alt="Carrusel 1" class="slide-image" />
+            <div class="slide-overlay">
+              <div class="slide-text">
+                <span>Categoría</span>
+                <h1>Título de la redacción</h1>
+                <p>Breve descripción de la redacción</p>
+                <a href="#" class="login-button">Leer más</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <button class="prev">&#10094;</button>
+        <div class="slide">
+            <div class="slide-inner">
+              <img src="assets/images/pic2.jpeg" alt="Carrusel 2" class="slide-image" /> <div class="slide-overlay">
+                <div class="slide-text">
+                  <span>Innovación</span>
+                  <h1>Nuevo proyecto de IA en NCIE</h1>
+                  <p>Descubre cómo nuestros estudiantes están innovando con inteligencia artificial.</p>
+                  <a href="#" class="login-button">Ver proyecto</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-inner">
+              <img src="assets/images/pic3.jpeg" alt="Carrusel 3" class="slide-image" /> <div class="slide-overlay">
+                <div class="slide-text">
+                  <span>Emprendimiento</span>
+                  <h1>Historias de éxito de nuestros graduados</h1>
+                  <p>Inspiradoras trayectorias de emprendedores que pasaron por NCIE.</p>
+                  <a href="#" class="login-button">Conocer más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div> <button class="prev">&#10094;</button>
     <button class="next">&#10095;</button>
 
     <div class="carousel-dots">
@@ -49,82 +75,127 @@
   <section class="publicaciones">
     <div class="contenedor">
       <h2>Últimas publicaciones</h2>
+      <p>Nam ut rutrum ex, venenatis sollicitudin urna erat volutpat.</p>
 
       <div class="contenido-principal">
         <div class="destacada">
           <span class="categoria">Social</span>
           <h3>NCIE triunfa en la competencia nacional de robótica en la categoría junior</h3>
-          <p class="meta">Perla de la O • Mar 15, 2025</p>
+          <p class="meta">Perla de la O • Mar 15, 2025 • 5 min lectura</p>
         </div>
 
         <div class="lista-publicaciones">
-
           <div class="publicacion">
-            <div class="imagen">
-              <img src="../IMG/nodo.jpg">
-            </div>
-            <div class="texto">
+            <div class="imagen"><img src="assets/images/placeholder_pub.jpg" alt="Imagen publicación"></div> <div class="texto">
               <h4>NCIE Movie: Estudiantes de alto rendimiento</h4>
-              <p>Donec convallis felis ac dapibus pretium...</p>
-              <p class="autor">César Bibiano • Jun 11, 2025</p>
+              <p>Vivamus et risus vitae est laoreet rhoncus. Aliquam erat.</p>
+              <p class="autor">Director NCIE • Jun 11, 2025</p>
             </div>
           </div>
 
           <div class="publicacion">
-            <div class="imagen">
-              <img src="../IMG/nodo.jpg" alt="Descripción">
-            </div>
+            <div class="imagen"><img src="assets/images/placeholder_pub.jpg" alt="Imagen publicación"></div>
             <div class="texto">
               <h4>Club de lectura: ¿Cómo crecer en NCIE y no morir en el intento?</h4>
-              <p>Aliquam erat volutpat. Morbi sodales...</p>
-              <p class="autor">Izmir Martínez • Oct 11, 2025</p>
+              <p>Morbi sodales gravida sagittis. Cras tristique ultricies purus.</p>
+              <p class="autor">El Chubchunko • Oct 11, 2025</p>
             </div>
           </div>
-
-          <div class="publicacion">
-            <div class="imagen">
-              <img src="../IMG/nodo.jpg" alt="Descripción">
-            </div>
-            <div class="texto">
-              <h4>Club de lectura: ¿Cómo crecer en NCIE y no morir en el intento?</h4>
-              <p>Aliquam erat volutpat. Morbi sodales...</p>
-              <p class="autor">Anette Leal • José Torres • Oct 11, 2025</p>
-            </div>
-          </div>
-          
         </div>
       </div>
     </div>
   </section>
 
+  <section class="publicaciones publicaciones--reciente"> <div class="contenedor">
+      <h2 class="titulo-reciente">Más reciente desde <span>Salud y Estilo de vida</span></h2> <div class="lista-publicaciones publicaciones-recientes-grid"> <div class="publicacion publicacion--card"> <div class="imagen">
+            <img src="assets/images/reciente1.jpg" alt="Conociendo el día a día de los estudiantes del NCIE">
+          </div>
+          <div class="texto">
+            <h4>Conociendo el día a día de los estudiantes del NCIE</h4>
+            <p>Pequeña descripción sobre lo más reciente.</p>
+            <p class="autor">Sarah McKenzie • Jun 11, 2025</p>
+          </div>
+        </div>
+
+        <div class="publicacion publicacion--card">
+          <div class="imagen">
+            <img src="assets/images/reciente2.jpg" alt="Viernes de cocina botana: Paquetaxo vs Papitas del Smart">
+          </div>
+          <div class="texto">
+            <h4>Viernes de cocina botana: Paquetaxo vs Papitas del Smart</h4>
+            <p>Comparativa divertida y sabrosa entre snacks.</p>
+            <p class="autor">Anna María López • Mar 8, 2025</p>
+          </div>
+        </div>
+
+        <div class="publicacion publicacion--card">
+          <div class="imagen">
+            <img src="assets/images/reciente3.jpg" alt="Cómo tener un balance entre estudiar, trabajar y vida personal">
+          </div>
+          <div class="texto">
+            <h4>Cómo tener un balance entre estudiar, trabajar y vida personal</h4>
+            <p>Consejos para mantenerte saludable y enfocado.</p>
+            <p class="autor">Bob Jones • Apr 21, 2025</p>
+          </div>
+        </div>
+
+        <div class="publicacion publicacion--card">
+          <div class="imagen">
+            <img src="assets/images/reciente4.jpg" alt="Cómo es el estilo de los estudiantes adscritos al NCIE">
+          </div>
+          <div class="texto">
+            <h4>Cómo es el estilo de los estudiantes adscritos al NCIE</h4>
+            <p>Descripción de hábitos y costumbres dentro del nodo.</p>
+            <p class="autor">John Alvarez • Feb 13, 2025</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <footer class="footer">
     <div class="contenedor-footer">
       <div class="footer-col">
         <h4>NCIE</h4>
+        <p>Donec nec ante nisi...</p>
         <p class="legal">© 2025 NCIE. Todos los derechos reservados.<br>
           <a href="#">Términos de servicio</a> • <a href="#">Política de privacidad</a>
         </p>
       </div>
 
       <div class="footer-col">
+        <h4>Etiqueta</h4>
+        <div class="tags">
+          <span>SOCIAL</span>
+          <span>NOTICIAS</span>
+          <span>ENTRETENIMIENTO</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
         <h4>Social</h4>
         <ul>
-          <li><a href="#">🐦 Twitter</a></li>
-          <li><a href="#">📘 Facebook</a></li>
-          <li><a href="#">📸 Instagram</a></li>
-          <li><a href="#">▶️ Youtube</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Youtube</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>About</h4>
         <ul>
+          <li><a href="#">Residencias y Servicio Social</a></li>
           <li><a href="#">Autores</a></li>
           <li><a href="#">Mapa del sitio</a></li>
+          <li><a href="#">Conócenos</a></li>
+          <li><a href="#">Contacto</a></li>
         </ul>
       </div>
     </div>
   </footer>
-
+  <script src="js/utils/carrusel.js"></script>
 </body>
 </html>

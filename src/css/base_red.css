@@ -1,0 +1,624 @@
+/* Variables CSS para una gestión de colores y espaciados más fácil */
+:root {
+  --primary-color: #DA261C; /* Tu color principal (Rojo de identidad - PREDOMINANTE) */
+  --secondary-color: #0C1E8B; /* Tu color secundario/de acento (Azul Oscuro de identidad) */
+  --text-color-light: #fff;  /* Blanco para texto sobre fondos oscuros/primarios */
+  --text-color-dark: #333;   /* Negro/gris oscuro para texto sobre fondos claros */
+  --background-light: #f9f9f9; /* Fondo claro para secciones */
+  --background-white: #fff;  /* Blanco puro para contenedores */
+  --border-color: #ddd;      /* Color de borde sutil */
+  --font-main: 'Inter', sans-serif; /* Usamos Inter como en tu HTML para coherencia */
+
+  /* Definición de espaciados para facilitar la responsividad */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+}
+
+/* Reset básico y estilos generales */
+*, *::before, *::after {
+  box-sizing: border-box; /* Incluye padding y border en el ancho/alto del elemento */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--text-color-dark); /* Texto general ahora más oscuro para fondos claros */
+  background-color: var(--background-light);
+  overflow-x: hidden; /* Evita barras de desplazamiento horizontal no deseadas */
+  -webkit-font-smoothing: antialiased; /* Suaviza fuentes para mejor legibilidad */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color); /* Los enlaces usarán el azul secundario */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #071566; /* Un tono más oscuro del azul secundario en hover */
+}
+
+/* Contenedor principal para centrar el contenido y aplicar padding */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md); /* Padding horizontal responsivo */
+}
+
+/* --- Header --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg); /* Más padding en escritorio */
+  background-color: var(--primary-color); /* Header ahora rojo (predominante) */
+  color: var(--text-color-light); /* Texto del header en blanco para contrastar */
+  border-bottom: 1px solid #B82117; /* Borde inferior un tono más oscuro del rojo */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: var(--spacing-sm); /* Espacio entre elementos del header */
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.8rem; /* Tamaño ligeramente más grande */
+  color: var(--text-color-light); /* Logo en blanco */
+}
+
+header nav ul {
+  list-style: none;
+  display: flex; /* Para poner los elementos de navegación en línea */
+  gap: var(--spacing-xl); /* Mayor espacio entre elementos de navegación */
+}
+
+header nav a {
+  text-decoration: none;
+  color: var(--text-color-light); /* Enlaces de navegación en blanco */
+  padding: var(--spacing-xs) 0;
+  position: relative; /* Para el efecto underline */
+  font-weight: 500; /* Ligeramente más grueso */
+  transition: color 0.3s ease;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--secondary-color); /* Underline con el color secundario (azul) */
+  left: 0;
+  bottom: -4px; /* Un poco más abajo */
+  transition: width 0.3s ease;
+}
+
+header nav a:hover::after {
+  width: 100%;
+}
+
+header nav a:hover {
+  color: #f04d44; /* Un tono más claro del rojo al hacer hover */
+}
+
+.login-button {
+  padding: var(--spacing-xs) var(--spacing-sm); /* Espaciado más consistente */
+  background-color: var(--secondary-color); /* Botón de login en azul secundario */
+  color: var(--text-color-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600; /* Semibold */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #09176B; /* Tono más oscuro del azul secundario */
+  transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Slider Section --- */
+.slider {
+  position: relative;
+  width: 90%; /* Ajustado para ocupar el 90% del ancho del padre */
+  max-width: 1400px;   /* Aumentado el ancho máximo para pantallas grandes */
+  margin: var(--spacing-lg) auto; /* Centra y da margen arriba/abajo */
+  background-color: var(--primary-color); /* Slider ahora rojo */
+  color: var(--text-color-light);
+  padding: var(--spacing-md);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra para destacarlo */
+}
+
+.slides {
+  position: relative;
+  height: 450px; /* Aumentado ligeramente la altura para pantallas grandes */
+  display: flex; /* Usamos flexbox para controlar el deslizamiento */
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex-shrink: 0; /* Evita que los slides se encojan */
+  width: 100%; /* Cada slide ocupa el 100% del viewport del slider */
+  height: 100%;
+  position: absolute; /* Para superponerlos */
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease-in-out; /* Transición más suave y un poco más lenta */
+  display: flex; /* Para centrar contenido si lo hubiera, aunque aquí es solo imagen */
+  align-items: center;
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%; /* Ocupa el 100% de la altura del slide */
+  object-fit: cover; /* Recorta la imagen para cubrir el espacio */
+  border-radius: 8px; /* Ligeramente más pequeños para que encajen mejor */
+  display: block;
+}
+
+/* Controles del Slider */
+.slider .prev,
+.slider .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7); /* Blanco semitransparente */
+  color: var(--secondary-color); /* Controles del slider en azul secundario */
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 1.8rem; /* Iconos un poco más grandes */
+  cursor: pointer;
+  border-radius: 50%;
+  width: 45px; /* Tamaño fijo para hacerlos perfectos círculos */
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 10; /* Asegura que estén por encima de las imágenes */
+}
+
+.slider .prev:hover,
+.slider .next:hover {
+  background: var(--secondary-color); /* Hover de controles en azul secundario */
+  color: var(--text-color-light);
+  transform: translateY(-50%) scale(1.05); /* Ligeramente más grande */
+}
+
+.slider .prev {
+  left: var(--spacing-md); /* Mayor separación de los bordes */
+}
+
+.slider .next {
+  right: var(--spacing-md); /* Mayor separación de los bordes */
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-md); /* Más margen arriba */
+  z-index: 10; /* Asegura que estén por encima del slider si hay un overflow */
+}
+
+.carousel-dots .dot {
+  width: 10px; /* Ligeramente más pequeños */
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6); /* Blanco semitransparente */
+  border-radius: 50%;
+  margin: 0 var(--spacing-xs); /* Menos margen entre puntos */
+  opacity: 0.8; /* Siempre un poco visible */
+  cursor: pointer;
+  border: 2px solid transparent; /* Para el borde activo */
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+  background: var(--secondary-color); /* Punto activo del carrusel en azul secundario */
+  border-color: var(--text-color-light);
+  opacity: 1;
+}
+
+/* --- Publicaciones Section --- */
+.publicaciones {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--background-light); /* Fondo claro para la sección */
+}
+
+.publicaciones .contenedor {
+  padding: 0 var(--spacing-md);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary-color); /* Título principal ahora en rojo */
+}
+
+.contenido-principal {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.destacada {
+  background-color: var(--primary-color); /* Destacada en rojo */
+  color: var(--text-color-light);
+  padding: var(--spacing-lg);
+  border-radius: 10px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Añadimos una imagen de fondo y un overlay para la destacada */
+.destacada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../IMG/destacada_bg.jpg'); /* **ASEGÚRATE DE QUE ESTA IMAGEN EXISTA** */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+    z-index: 1;
+}
+
+.destacada::after { /* Overlay gradiente oscuro en la parte inferior */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    z-index: 2;
+}
+
+.destacada > * { /* Asegura que el contenido esté por encima de los overlays */
+    position: relative;
+    z-index: 3;
+}
+
+.destacada .categoria {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  background-color: var(--secondary-color); /* Categoría destacada en azul */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.destacada h3 {
+  margin: var(--spacing-sm) 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.destacada .meta {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.lista-publicaciones {
+  margin-top: 0;
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.publicacion {
+  display: flex;
+  gap: var(--spacing-md);
+  background-color: var(--background-white);
+  padding: var(--spacing-sm);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-items: flex-start;
+}
+
+.publicacion:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.publicacion .imagen {
+  flex-shrink: 0;
+  width: 140px;
+  height: 90px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.publicacion .imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.publicacion .texto h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-xs);
+}
+
+.publicacion .texto p {
+  font-size: 0.95rem;
+  color: var(--text-color-dark); /* Texto de publicaciones en oscuro */
+  margin-bottom: var(--spacing-xs);
+}
+
+.publicacion .autor {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--primary-color); /* Footer ahora rojo */
+  color: var(--text-color-light);
+  padding: var(--spacing-xl) var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.contenedor-footer {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
+}
+
+.footer-col {
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-col h4 {
+  margin-bottom: var(--spacing-md);
+  font-size: 1.3rem;
+  color: var(--secondary-color); /* Títulos del footer en azul */
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color); /* Línea del título del footer en azul */
+}
+
+.footer-col p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-col .legal {
+  margin-top: var(--spacing-sm);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.footer-col .legal a {
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-col .legal a:hover {
+  color: var(--text-color-light);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-col ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: var(--text-color-light);
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Pantallas extra pequeñas y pequeñas (móviles): Hasta 767px */
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+
+    header nav ul li a {
+        padding: var(--spacing-xs) 0;
+        display: block;
+    }
+
+    .login-button {
+        width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+
+    .slider {
+        margin: var(--spacing-md) auto;
+        padding: var(--spacing-sm);
+        max-width: 95%;
+    }
+
+    .slides {
+        height: 250px;
+    }
+
+    .slider .prev, .slider .next {
+        width: 35px;
+        height: 35px;
+        font-size: 1.4rem;
+        padding: 0.3rem 0.6rem;
+        left: var(--spacing-sm);
+        right: var(--spacing-sm);
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--primary-color); /* Mantener el título principal en rojo */
+    }
+
+    .contenido-principal {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .destacada {
+        min-height: 280px;
+        padding: var(--spacing-md);
+    }
+
+    .destacada h3 {
+        font-size: 1.6rem;
+    }
+
+    .publicacion {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+
+    .publicacion .imagen {
+        width: 100%;
+        height: 180px;
+        margin: 0 auto var(--spacing-sm) auto;
+    }
+
+    .publicacion .texto h4 {
+      font-size: 1.1rem;
+    }
+
+    .footer-col {
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-col ul {
+        padding-left: 0;
+    }
+}
+
+/* Pantallas medianas (tabletas): Entre 768px y 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    header nav ul {
+        gap: var(--spacing-lg);
+    }
+
+    .slider {
+        max-width: 850px;
+        padding: var(--spacing-md);
+    }
+
+    .slides {
+        height: 350px;
+    }
+
+    .contenido-principal {
+        grid-template-columns: 1.5fr 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .destacada {
+        min-height: 320px;
+        padding: var(--spacing-md);
+    }
+
+    .destacada h3 {
+        font-size: 1.8rem;
+    }
+
+    .publicacion .imagen {
+        width: 100px;
+        height: 70px;
+    }
+
+    .footer-col {
+        flex-basis: calc(50% - var(--spacing-lg) / 2);
+    }
+}
+
+/* Pantallas grandes (escritorio): Más de 1025px */
+@media (min-width: 1025px) {
+    .slider {
+        width: 90%;
+        max-width: 1600px;
+        padding: var(--spacing-lg);
+    }
+
+    .slides {
+        height: 500px;
+    }
+
+    .slider .prev,
+    .slider .next {
+        width: 55px;
+        height: 55px;
+        font-size: 2.2rem;
+        left: var(--spacing-xl);
+        right: var(--spacing-xl);
+    }
+
+    h2 {
+        color: var(--primary-color); /* Asegurar que el título principal sea rojo en escritorio */
+    }
+}
